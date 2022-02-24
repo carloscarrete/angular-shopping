@@ -1,0 +1,5 @@
+<app-img [img]="product.image"></app-img>
+<h3>{{product.title | vowels}}</h3>
+<p appHighlight>{{product.description}}</p>
+<p>{{product.price | currency:'MXN'}}</p>
+<button (click)="addToCart()">Añadir al carrito</button>

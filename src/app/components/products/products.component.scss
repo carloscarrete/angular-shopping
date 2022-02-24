@@ -1,0 +1,22 @@
+.product-template{
+  display: flex;
+  flex-direction: column;
+}
+
+//Web - Laptop - Monitor 1280
+@media (min-width:1281px) {
+  .product-template{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+  }
+ }
+
+//Tablet - 960 - LandScape
+@media (min-width:961px)  {
+  .product-template{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+  }
+ }

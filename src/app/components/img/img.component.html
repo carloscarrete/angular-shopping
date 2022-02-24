@@ -1,0 +1,5 @@
+<img (load)="loadedImage()" (error)="errorImage()" [src]="command" alt="imagen" *ngIf="command; else noImage"/>
+<ng-template #noImage>
+   <img [src]="defaultImage" alt="imagen"/>
+</ng-template>
+

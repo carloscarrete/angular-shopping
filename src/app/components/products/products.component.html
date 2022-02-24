@@ -1,0 +1,11 @@
+<p>Añadido: {{myShoppingCart.length}}</p>
+<p>Total $: {{total}}</p>
+<p>Hoy: {{today | date:'short'}}</p>
+<p>Hoy con fns: {{today | timeAgo}}</p>
+<p>Otra Fecha: {{date | date:'yyyy.dd.MM'}}</p>
+<p>{{'Hola' | uppercase}}</p>
+
+<div class="product-template">
+  <app-product (addedProduct)="onAddToShoppingCart($event)" [product]="productOfIteratorVariable" *ngFor="let productOfIteratorVariable of products"></app-product>
+</div>
+

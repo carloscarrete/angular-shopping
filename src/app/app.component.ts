@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-store-carrete';
+  imagen = '';
+  showImg = true;
+
+
+  chargeMyImage(imagen: string){
+    console.log('Charged');
+    console.log(imagen);
+  }
+
+  toggleButton(){
+    this.showImg = !this.showImg;
+  }
 }
