@@ -1,4 +1,4 @@
-<app-img [img]="product.image"></app-img>
+<app-img *ngIf="product.images.length" [img]="product.images[0]"></app-img>
 <h3>{{product.title | vowels}}</h3>
 <p appHighlight>{{product.description}}</p>
 <p>{{product.price | currency:'MXN'}}</p>
