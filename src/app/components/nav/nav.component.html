@@ -34,7 +34,13 @@
       </ul>
     </nav>
     <div class="info">
-      <div class="account">carloscarrete.sc@gmail.com</div>
+      <div class="account">
+        <button *ngIf="!token; else elseBlock" (click)="login()">Login</button>
+        <ng-template #elseBlock>
+          {{profile?.email}}
+          <button (click)="getProfile()">Profile</button>
+        </ng-template>
+      </div>
       <div>
         <a href="">
           <img src="../../../assets/svg/cart.svg" alt="logo">

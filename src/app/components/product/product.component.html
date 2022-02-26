@@ -1,5 +1,9 @@
 <app-img *ngIf="product.images.length" [img]="product.images[0]"></app-img>
 <h3>{{product.title | vowels}}</h3>
+<h3>{{product.title | vowels}}</h3>
 <p appHighlight>{{product.description}}</p>
 <p>{{product.price | currency:'MXN'}}</p>
+<p>{{product?.taxes | currency:'MXN'}}</p>
 <button (click)="addToCart()">Añadir al carrito</button>
+<button (click)="showDetail()">Ver detalle</button>
+

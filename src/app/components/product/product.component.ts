@@ -18,16 +18,22 @@ export class ProductComponent implements OnInit {
     category: {
       id: '',
       name: '',
+
     },
   }
 
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
 
   ngOnInit(): void {
   }
 
   addToCart(){
     this.addedProduct.emit(this.product)
+  }
+
+  showDetail(){
+    this.showProduct.emit(this.product.id);
   }
 
 }

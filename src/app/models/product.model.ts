@@ -11,5 +11,14 @@ export interface Product {
   images: string[];
   description: string;
   category: Category;
+  taxes?: number;
+}
+
+export interface CreateProduct extends Omit<Product, 'id' | 'category'> {
+  categoryId: number;
+}
+
+//Todos los campos opcionales
+export interface UpdateProduct extends Partial<CreateProduct>{
 
 }

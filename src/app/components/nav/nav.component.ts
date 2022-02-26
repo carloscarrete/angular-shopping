@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
 
 
 @Component({
@@ -10,8 +12,10 @@ import { StoreService } from 'src/app/services/store.service';
 export class NavComponent implements OnInit {
   showMenu: boolean = false;
   counter: number = 0;
+  token='';
+  profile: User | null = null;
 
-  constructor(private storeService: StoreService) { }
+  constructor(private storeService: StoreService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.storeService.myCart$.subscribe(products=>{
@@ -23,6 +27,22 @@ export class NavComponent implements OnInit {
   toggleMenu(){
     this.showMenu = !this.showMenu;
     console.log(this.showMenu);
+  }
+
+  login(){
+    this.authService.login('carlos@gmail.com','123456')
+    .subscribe(rta=>{
+      this.token = rta.access_token;
+      console.log(this.token);
+      this.getProfile();
+    })
+  }
+
+  getProfile(){
+    this.authService.profile(this.token)
+    .subscribe(user =>{
+      this.profile = user;
+    })
   }
 
 }

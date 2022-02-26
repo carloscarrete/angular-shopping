@@ -12,6 +12,23 @@
   }
  }
 
+ .product-detail{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transform: translate(100%);
+  transition: all ease-out .5s;
+  &.active{
+    transform: translate(0%);
+  }
+}
+
 //Tablet - 960 - LandScape
 @media (min-width:961px)  {
   .product-template{

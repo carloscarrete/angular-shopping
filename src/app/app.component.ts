@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,12 @@ export class AppComponent {
   imagen = '';
   showImg = true;
 
+  token: string = '';
+
+  constructor(
+    private userService: UsersService
+  ){}
+
 
   chargeMyImage(imagen: string){
     console.log('Charged');
@@ -19,4 +26,17 @@ export class AppComponent {
   toggleButton(){
     this.showImg = !this.showImg;
   }
+
+  createUser(){
+    this.userService.create({
+      name: 'Carlos',
+      email: 'carlos@gmail.com',
+      password: '123456'
+    })
+    .subscribe(rta=>{
+      console.log(rta);
+    })
+  }
+
+
 }
