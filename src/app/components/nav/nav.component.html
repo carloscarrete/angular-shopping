@@ -35,10 +35,9 @@
     </nav>
     <div class="info">
       <div class="account">
-        <button *ngIf="!token; else elseBlock" (click)="login()">Login</button>
+        <button *ngIf="!profile; else elseBlock" (click)="loginAndGet()">Login</button>
         <ng-template #elseBlock>
           {{profile?.email}}
-          <button (click)="getProfile()">Profile</button>
         </ng-template>
       </div>
       <div>
