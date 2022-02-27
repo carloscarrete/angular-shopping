@@ -14,6 +14,7 @@ export class AppComponent {
   showImg = true;
 
   token: string = '';
+  imageUploaded = '';
 
   constructor(
     private userService: UsersService,
@@ -44,6 +45,17 @@ export class AppComponent {
   downloadPDF(){
     this.fileService.getFile('my.pdf','https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf','application/pdf')
     .subscribe()
+  }
+
+  onUpload(event: Event){
+    const element = event.target as HTMLInputElement;
+    const file = element.files?.item(0);
+    if(file){
+      this.fileService.uploadFile(file)
+      .subscribe(rta=>{
+        this.imageUploaded=rta.location;
+      })
+    }
   }
 
 }

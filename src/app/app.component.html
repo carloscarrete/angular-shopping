@@ -2,7 +2,10 @@
 <button (click)="createUser()">Crear User</button>
 <button (click)="downloadPDF()">Download PDF</button>
 <app-products></app-products>
-
+<p>
+  <input type="file" (change)="onUpload($event)"/>
+  <img [src]="imageUploaded" *ngIf="imageUploaded"/>
+</p>
 
 
 <!-- <p>
