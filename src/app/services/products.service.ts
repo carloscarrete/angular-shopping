@@ -1,7 +1,10 @@
-import { HttpClient, HttpClientModule, HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpErrorResponse, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { retry, catchError, throwError, map, zip } from 'rxjs';
 import { CreateProduct, Product, UpdateProduct } from '../models/product.model';
+import {TimeInterceptor} from '../interceptors/time.interceptor'
+import {checkTime} from '../interceptors/time.interceptor'
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,10 +38,14 @@ export class ProductsService {
 
 
 
-  getProductByPage(limit: number, offset: number){
-    return this.http.get<Product[]>(`${this.apiUrl}`, {
-      params: {limit, offset}
-    }).pipe(
+  getProductByPage(limit?: number, offset?: number){
+    let params = new HttpParams();
+    if (limit && params){
+      params = params.set('limit',limit);
+      params = params.set('offset',limit);
+    }
+    return this.http.get<Product[]>(this.apiUrl,{params, context: checkTime()})
+    .pipe(
       retry(3),
       map(products=> products.map(item => {
         return {
@@ -48,6 +55,7 @@ export class ProductsService {
       }))
     );
   }
+
 
   fetchReadAndUpdate(id:string, data: UpdateProduct){
     //Zip permite enviar 2 observadores y recibir su respuesta al tiempo
