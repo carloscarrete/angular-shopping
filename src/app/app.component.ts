@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FilesService } from './services/files.service';
 import { UsersService } from './services/users.service';
+
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,8 @@ export class AppComponent {
   token: string = '';
 
   constructor(
-    private userService: UsersService
+    private userService: UsersService,
+    private fileService: FilesService
   ){}
 
 
@@ -38,5 +41,9 @@ export class AppComponent {
     })
   }
 
+  downloadPDF(){
+    this.fileService.getFile('my.pdf','https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf','application/pdf')
+    .subscribe()
+  }
 
 }

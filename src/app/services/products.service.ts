@@ -38,6 +38,20 @@ export class ProductsService {
 
 
 
+/*   getProductByPage(limit: number, offset: number){
+    return this.http.get<Product[]>(`${this.apiUrl}`, {
+      params: {limit, offset}
+    }).pipe(
+      retry(3),
+      map(products=> products.map(item => {
+        return {
+          ...item,
+          taxes: .16 * item.price
+        }
+      }))
+    );
+  } */
+
   getProductByPage(limit?: number, offset?: number){
     let params = new HttpParams();
     if (limit && params){
